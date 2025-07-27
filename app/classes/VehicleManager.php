@@ -16,7 +16,7 @@ class VehicleManager extends VehicleBase implements VehicleActions {
     public function editVehicle($id, $data) {
         $vehicles = $this->readFile();
         if(isset($vehicles[$id])){
-            $vehicles[] = $data;
+            $vehicles[$id] = $data;
             $this->writeFile($vehicles);
         }
     }
@@ -30,7 +30,7 @@ class VehicleManager extends VehicleBase implements VehicleActions {
     }
 
     public function getVehicles() {
-       
+       return $this->readFile();
     }
 
     // Implement abstract method
