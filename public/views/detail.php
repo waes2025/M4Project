@@ -3,10 +3,7 @@ require_once "../../app/classes/VehicleManager.php";
 
 $vehicleManager = new VehicleManager("","","","");
 
-
 $id = $_GET['id'] ?? null;
-// var_dump($id);
-// exit;
 
 if($id === null){
     header("Location: ../index.php");
@@ -23,7 +20,7 @@ if (!$vehicle) {
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $vehicleManager = new VehicleManager("","","","");
-    $vehicleManager->editVehicle($id,[
+    $vehicleManager->getDetails($id,[
         'name' => $_POST['name'],
         'type' => $_POST['type'],
         'price' => $_POST['price'],
@@ -38,7 +35,7 @@ include './header.php';
 ?>
 
 <div class="container my-4">
-    <h1>Vehicle Detail: </h1>
+    <h1>Vehicle Detail </h1>
     <form method="POST">
         <div class="col-md-12">
             <div class="card">
@@ -61,7 +58,7 @@ include './header.php';
                         </div>
                         <div class="mb-1">
                             <label class="form-label">Price: </label>
-                            <label><?= htmlspecialchars($vehicle['price']) ?></label>
+                            <label>$ <?= htmlspecialchars($vehicle['price']) ?></label>
                         </div>
                         <div class="col-md-12">
                             <a href="../index.php" class="btn btn-secondary">Cancel</a>

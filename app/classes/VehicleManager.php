@@ -34,7 +34,10 @@ class VehicleManager extends VehicleBase implements VehicleActions {
     }
 
     // Implement abstract method
-    public function getDetails() {
-        
+    public function getDetails($id, $data) {
+        $vehicles = $this->readFile();
+        if(isset($vehicles[$id])){
+            $vehicles[$id] = $data;
+        }
     }
 }
